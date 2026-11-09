@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPI-01 · Estacionamiento inteligente</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">SPI-01 · Tecnologías Emergentes</p>
+      <h1>Estacionamiento inteligente</h1>
+    </div>
+    <p id="link" class="link off">Sin Arduino</p>
+  </header>
+
+  <main>
+    <section class="lot" aria-label="Planta del estacionamiento">
+      <div class="top">
+        <div class="pad"></div>
+        <div class="stalls">
+        <article class="stall unknown" data-slot="1">
+          <span class="num">1</span>
+          <span class="car" hidden></span>
+          <p class="label">Sin lectura</p>
+          <p class="cm"></p>
+        </article>
+        <article class="stall unknown" data-slot="2">
+          <span class="num">2</span>
+          <span class="car" hidden></span>
+          <p class="label">Sin lectura</p>
+          <p class="cm"></p>
+        </article>
+        <article class="stall unknown" data-slot="3">
+          <span class="num">3</span>
+          <span class="car" hidden></span>
+          <p class="label">Sin lectura</p>
+          <p class="cm"></p>
+        </article>
+        </div>
+        <div class="pad"></div>
+      </div>
+      <div class="floor">
+        <div class="lane">
+          <div id="arm-entry" class="arm closed"></div>
+          <span class="lane-name">Entrada</span>
+        </div>
+        <div class="aisle">Carril</div>
+        <div class="lane">
+          <div id="arm-exit" class="arm exit closed"></div>
+          <span class="lane-name">Salida</span>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <section class="card count-card">
+        <p id="free" class="free">0</p>
+        <p>lugares libres</p>
+        <p id="occupied" class="muted">0 ocupados</p>
+        <p id="lamp" class="lamp yellow">Sin lectura firme</p>
+      </section>
+
+      <section class="card">
+        <h2>Barreras</h2>
+        <p><span>Entrada</span> <strong id="gate">Cerrada</strong></p>
+        <p><span>Salida</span> <strong id="exit-gate">Cerrada</strong></p>
+      </section>
+
+      <section class="card">
+        <h2>Sensores de paso</h2>
+        <ul class="dots">
+          <li id="dot-entry-1">Entrada 1</li>
+          <li id="dot-entry-2">Entrada 2</li>
+          <li id="dot-barrier">Paso entrada</li>
+          <li id="dot-exit-1">Salida 1</li>
+          <li id="dot-exit-2">Salida 2</li>
+          <li id="dot-exit-barrier">Paso salida</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Actividad</h2>
+        <ol id="events"></ol>
+        <p id="updated" class="muted">Aún no llega un mensaje.</p>
+      </section>
+
+      <section class="actions">
+        <button type="button" data-cmd="sensors">Leer sensores</button>
+        <button type="button" data-cmd="status">Pedir estado</button>
+        <button type="button" data-cmd="open">Abrir entrada</button>
+        <button type="button" data-cmd="close">Cerrar barreras</button>
+      </section>
+      <p id="action-note" class="muted"></p>
+    </aside>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

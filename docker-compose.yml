@@ -1,0 +1,13 @@
+services:
+  tablero:
+    build: .
+    container_name: spi-tablero
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+    devices:
+      - "${SERIAL_PORT:-/dev/ttyACM0}:${SERIAL_PORT:-/dev/ttyACM0}"
+    environment:
+      SERIAL_PORT: ${SERIAL_PORT:-/dev/ttyACM0}
+      SERIAL_BAUD: ${SERIAL_BAUD:-115200}
+      HTTP_PORT: "8080"
